@@ -3,9 +3,10 @@ let app = express();
 const Vehiculo = require('../models/vehiculo');
 
 /*  enviar carros */
-app.get('/api/carros', (req, res) => {
+app.get('/vehiculos', (req, res) => {
 
   Vehiculo.find({})
+    .populate('vehiculo', 'linea ') 
     .exec((err, vehiculos) => {
       if (err) {
         return res.status(500).json({
