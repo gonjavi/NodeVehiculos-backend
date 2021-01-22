@@ -2,8 +2,9 @@ require('./config/config');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
-const bodyparser = require('body-parser');
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json());
 
 app.use(require('./routes/vehiculo'));
@@ -16,8 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyparser.json({limit: "50mb"}));
-app.use(bodyparser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 
 mongoose.connect(process.env.URLDB, 

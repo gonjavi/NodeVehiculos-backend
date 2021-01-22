@@ -6,7 +6,7 @@ let vehiculoSchema = new Schema({
   marca: { type: String, required: [true, 'Se debe incluir la marca'] },
   modelo: { type: String, required: false },
   color: { type: String, required: false },
-  foto: { type: Text, required: false }
+  foto: { type: String, required: false }
 });
 
 module.exports = mongoose.model('Vehiculo', vehiculoSchema);
