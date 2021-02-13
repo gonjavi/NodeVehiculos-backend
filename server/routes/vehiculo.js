@@ -2,7 +2,6 @@ const express = require('express');
 let app = express();
 const Vehiculo = require('../models/vehiculo');
 
-/*  enviar carros */
 app.get('/vehiculos', (req, res) => {
 
   Vehiculo.find({})
@@ -23,8 +22,7 @@ app.get('/vehiculos', (req, res) => {
   });
 });
 
-/*  borrar carros */
-app.delete("/carro/borrar/:id", (req, res) => {   
+app.delete("/vehiculos/:id", (req, res) => {   
   const id = req.params.id;    
   
   Vehiculo.findByIdAndRemove(id, (err, carro) => {
@@ -49,8 +47,7 @@ app.delete("/carro/borrar/:id", (req, res) => {
   });
 });
 
-/*  guardar carros sql */
-app.post('/carro/nuevo',function(req, res){
+app.post('/vehiculos',function(req, res){
   let vehiculo= new Vehiculo({
     "linea":req.body.linea,
     "marca":req.body.marca,
@@ -72,9 +69,7 @@ app.post('/carro/nuevo',function(req, res){
   });
 });
 
-/*  actualizar carros sql */
-app.put('/carro/actualizar/:id',function(req,res){
-
+app.put('/vehiculos/:id', function(req,res){
   const id = req.params.id;  
   let vehiculo={
   "linea":req.body.linea,
@@ -84,10 +79,27 @@ app.put('/carro/actualizar/:id',function(req,res){
   "foto":req.body.Foto,
   }
   
+  Vehiculo.findByIdAndUpdate(id, vehiculo,  { new: true }, (err, vehiculoDB) => {
+    if (err) {
+      return res.status(500).json({
+        ok: false,
+        err
+      });
+    }
+
+    if (!vehiculoDB) {
+      return res.status(400).json({
+        ok: false,
+        err
+      });
+    }
+
+    res.json({
+      ok: true,
+      vehiculo: vehiculoDB
+    });
+  });
   
 });
-
-
-
 
 module.exports = app;

@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 
 mongoose.connect(process.env.URLDB, 
-    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, 
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }, 
     (err, res) => {
     if (err) throw err;
       console.log('Base de datos en linea'); 
