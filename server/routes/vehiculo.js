@@ -1,6 +1,6 @@
 const express = require('express');
 let app = express();
-const Vehiculo = require('../models/vehiculo');
+let Vehiculo = require('../models/vehiculo');
 
 app.get('/vehiculos', (req, res) => {
 
@@ -22,10 +22,10 @@ app.get('/vehiculos', (req, res) => {
   });
 });
 
-app.delete("/vehiculos/:id", (req, res) => {   
+app.delete('/vehiculo/:id', (req, res) => {   
   const id = req.params.id;    
   
-  Vehiculo.findByIdAndRemove(id, (err, carro) => {
+  Vehiculo.findByIdAndDelete(id, (err, carroDB) => {
     if (err) {
       return res.status(500).json({
         ok: false,
@@ -33,35 +33,47 @@ app.delete("/vehiculos/:id", (req, res) => {
       });
     }
 
-    if (!carro) {
+    if (!carroDB) {
       return res.status(400).json({
         ok: false,
-        err
+        err: {
+          message: 'The vehicle does not exist'
+        }
       });
     }
 
     res.json({
       ok: true,
-      message: ' Vehiculo borrado'
+      message: 'The vehicle was delete - Vehiculo borrado'
     });
   });
 });
 
-app.post('/vehiculos',function(req, res){
+app.post('/vehiculos', (req, res) => {
+  let body = req.body;
+
   let vehiculo= new Vehiculo({
-    "linea":req.body.linea,
-    "marca":req.body.marca,
-    "modelo":req.body.modelo,
-    "color":req.body.color,
-    "foto":req.body.Foto,
+    linea: body.linea,
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    color: req.body.color,
+    foto: req.body.foto,
   });
   vehiculo.save((err, vehiculoDB) => {
     if (err) {
+      return res.status(500).json({
+        ok: false,
+        err
+      });
+    }
+
+    if (!vehiculoDB) {
       return res.status(400).json({
         ok: false,
         err
       });
     }
+
     res.json({
       ok: true,
       vehiculo: vehiculoDB
@@ -69,14 +81,15 @@ app.post('/vehiculos',function(req, res){
   });
 });
 
-app.put('/vehiculos/:id', function(req,res){
-  const id = req.params.id;  
+app.put('/vehiculo/:id', function(req,res){
+  const id = req.params.id; 
+
   let vehiculo={
-  "linea":req.body.linea,
-  "marca":req.body.marca,
-  "modelo":req.body.modelo,
-  "color":req.body.color,
-  "foto":req.body.Foto,
+    linea: req.body.linea,
+    marca: req.body.marca,
+    modelo: req.body.modelo,
+    color: req.body.color,
+    foto: req.body.foto,
   }
   
   Vehiculo.findByIdAndUpdate(id, vehiculo,  { new: true }, (err, vehiculoDB) => {

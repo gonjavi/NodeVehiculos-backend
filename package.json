@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "v14.16.0"
+  },
   "scripts": {
-    "start": "nodemon --watch server --exec babel-node server/server.js"
+    "start": "node index.js",
+    "nodemon": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,18 +21,8 @@
   },
   "homepage": "https://github.com/gonjavi/nodeVehiculos-backend#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.13",
-    "mssql": "^6.2.1",
-    "react-animated-progress-bar": "^1.0.4"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/node": "^7.10.5",
-    "@babel/preset-env": "^7.11.0",
-    "nodemon": "^2.0.4"
+    "mongoose": "^5.11.13"
   }
 }

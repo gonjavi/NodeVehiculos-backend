@@ -1,12 +1,12 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let vehiculoSchema = new Schema({
-  linea: { type: String, required: [true, 'Se debe incluir la línea'] },
-  marca: { type: String, required: [true, 'Se debe incluir la marca'] },
-  modelo: { type: String, required: false },
-  color: { type: String, required: false },
-  foto: { type: String, required: false }
+  linea: { type: String, required: true },
+  marca: { type: String, required: true },
+  modelo: { type: String, required: true },
+  color: { type: String, required: true },
+  foto: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Vehiculo', vehiculoSchema);
