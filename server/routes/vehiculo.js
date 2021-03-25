@@ -23,8 +23,7 @@ app.get('/vehiculos', (req, res) => {
 });
 
 app.delete('/vehiculo/:id', (req, res) => {   
-  const id = req.params.id;    
-  
+  const id = req.params.id;
   Vehiculo.findByIdAndDelete(id, (err, carroDB) => {
     if (err) {
       return res.status(500).json({
