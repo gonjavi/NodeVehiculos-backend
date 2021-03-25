@@ -1,56 +1,53 @@
-# Node Express Vehiculos Backend
+# Node Vehiculos API
 
-Este es un proyecto backend de registro de automoviles, utilizando Node, Express y SQLServer.
+This is an API that allows crud actions for vehicles. The propject was built with Node.js and deployed on Heroku.
 
-### Prerequisitos
-- npm 6.14.8
-- node 14.10.1
+## Endpoints to test the API
 
-#### Backend
-- Correr $npm install    en el directorio raiz  para instalar todas las dependencias de el package.json 
-- Corra en backend en la: $npm start
-- El backend iniciará en el pruerto 5000, podrá ser visto en el terminal.
+url: https://node-vehiculos-api.herokuapp.com
 
-Crear la base de datos llamada carros SQLServer y luego crear la tabla ejecutando en Azure Data studio:
+user endpoints
+- get: vehiculos - url/vehiculos/
+- put: update a vehiculo - url/vehiculos//:id
+- post: create a vehiculo - url/vehiculos/
+- delete: delete a vehiculo - url/vehiculo/:id
 
-![screenshot](./img/creartabla.png)
+![screenshot](./img/json.png) 
 
-create table vehiculos (
-    id int PRIMARY KEY IDENTITY(1,1),
-    linea VARCHAR (50) NOT NULL,
-    marca VARCHAR (50) NOT NULL,
-    modelo VARCHAR (50),
-    color VARCHAR (50),
-    foto text
-);
 
-- En el archivo backend/server.js, cambiar las credenciales de usuario en const config.
+You can download the file inside the folder postman_collection and import it in postman to test the API. You can set the local variable as url, with initial and current value = http://localhost:3001, and to test production initial and current value should be = https://node-vehiculos-api.herokuapp.com
 
-## Construido con
+## Built With
 
-- React 16.13.1
-- Redux 4.0.5
-- React-Bootstrap 1.0.1
-- Visual Code
+- npm 6.14.11
+- node 14.16.0
+- express 4.17.1
+- mongoose 5.12.0
 
-## Autor:
+## Installation
+
+```bash
+$ npm install
+```
+
+## Author:
 👤 **Gonza Javier Mancilla**
 
 - Github: [@gonjavi](https://github.com/gonjavi)
 - Linkedin: [@g-javier-mancilla](https://www.linkedin.com/in/g-mancillla)
 
-## 🤝 Contribución
 
-Contribuciones, problemas y solicitud de caracteristicas son bienvenidas!
+## 🤝 Contributing
 
-
-## Muestra tu apoyo
-
-Da una ⭐️ si te gusta el proyecto!
+Contributions, issues and feature requests are welcome!
 
 
-## 📝 Licencia
+## Show your support
 
-Este proyecto tiene licencia [MIT](lic.url).
+Give a ⭐️ if you like this project!
 
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
 
