@@ -1,5 +1,7 @@
 const express = require('express');
 let app = express();
+const cors = require('cors');
+app.use(cors());
 let Vehiculo = require('../models/vehiculo');
 
 app.get('/vehiculos', (req, res) => {
