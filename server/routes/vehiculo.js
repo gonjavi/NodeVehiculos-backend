@@ -86,6 +86,7 @@ app.put('/vehiculo/:id', function(req,res){
   const id = req.params.id; 
 
   console.log(req)
+  
   let vehiculo={
     linea: req.body.linea,
     marca: req.body.marca,
