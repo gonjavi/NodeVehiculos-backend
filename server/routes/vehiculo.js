@@ -52,7 +52,7 @@ app.delete('/vehiculo/:id', (req, res) => {
 
 app.post('/vehiculos', (req, res) => {
   let body = req.body;
-  console.log(body)
+  
   let vehiculo= new Vehiculo({
     linea: body.linea,
     marca: req.body.marca,
@@ -82,11 +82,9 @@ app.post('/vehiculos', (req, res) => {
   });
 });
 
-app.put('/vehiculo/:id', function(req,res){
-  const id = req.params.id; 
+app.put('/vehiculo/:_id', function(req, res){
+  const _id = req.params._id; 
 
-  console.log(req)
-  
   let vehiculo={
     linea: req.body.linea,
     marca: req.body.marca,
@@ -95,7 +93,7 @@ app.put('/vehiculo/:id', function(req,res){
     foto: req.body.foto,
   }
   
-  Vehiculo.findByIdAndUpdate(id, vehiculo,  { new: true }, (err, vehiculoDB) => {
+  Vehiculo.findByIdAndUpdate(_id, vehiculo,  { new: true }, (err, vehiculoDB) => {
     if (err) {
       return res.status(500).json({
         ok: false,
