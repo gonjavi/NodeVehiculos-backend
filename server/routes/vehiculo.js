@@ -52,7 +52,7 @@ app.delete('/vehiculo/:id', (req, res) => {
 
 app.post('/vehiculos', (req, res) => {
   let body = req.body;
-
+  console.log(body)
   let vehiculo= new Vehiculo({
     linea: body.linea,
     marca: req.body.marca,
@@ -85,6 +85,7 @@ app.post('/vehiculos', (req, res) => {
 app.put('/vehiculo/:id', function(req,res){
   const id = req.params.id; 
 
+  console.log(req)
   let vehiculo={
     linea: req.body.linea,
     marca: req.body.marca,
