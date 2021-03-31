@@ -15,8 +15,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.urlencoded({ limit: '20mb', extended: true }));
-app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
+app.use(express.json({ limit: '30mb' }));
 
 app.use(require('./server/routes/vehiculo'));
 
